@@ -15,6 +15,7 @@ function App() {
   useEffect(() => {
     setFilteredList(list);
   }, [list]);
+
   const handleAddTask=(e)=>{
    
     const newTask={name:input,status:false}
@@ -31,19 +32,20 @@ function App() {
 
   const onChangeTaskStatus = (e, index) => {
     const status = e.target.checked //reading latest state of checkbox
-    console.log("oldtask",list[index])
+    // console.log("oldtask",list[index])
     const task = { ...list[index], status:status}; //copying task in question and updating its status
-    console.log("updatedtask",task)
+    // console.log("updatedtask",task)
     const updatedList = [...list]; //copying list
-    console.log("list",updatedList)
+    // console.log("list",updatedList)
     updatedList[index] = task; //updating index with latest task state
-    console.log("updatedlist",updatedList)
+    // console.log("updatedlist",updatedList)
 
     setList(updatedList);  
   };
 
   const showAllTasks=()=>{
-  setFilteredList(list)
+  setFilteredList(list) 
+  console.log(list)
 
   }
   const showActiveTasks=()=>{
