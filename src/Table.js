@@ -1,10 +1,11 @@
 import React from "react";
 import { Checkbox, Button, Popconfirm, Input } from "antd";
+import "./Table.css";
 
 function Table(props) {
   return (
     <div>
-      <table className="table">
+      <table className="table table-dark table-striped">
         <thead>
           <tr>
             <th scope="col">Status</th>
@@ -35,7 +36,12 @@ function Table(props) {
                 )}
               </td>
               <td>
-                <Button onClick={() => props.onEdit(index)}>edit</Button>
+                <Button
+                  className="table__button__edit,btn btn-warning,btn btn-warning btn-sm"
+                  onClick={() => props.onEdit(index)}
+                >
+                  edit
+                </Button>
 
                 <Popconfirm
                   title="Are you sure to delete this task?"
@@ -44,7 +50,9 @@ function Table(props) {
                   okText="Yes"
                   cancelText="No"
                 >
-                  <Button>delete</Button>
+                  <Button className="m-2,btn btn-outline-danger,btn btn-danger btn-sm">
+                    delete
+                  </Button>
                 </Popconfirm>
               </td>
             </tr>

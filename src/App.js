@@ -5,6 +5,7 @@ import Footer from "./Footer";
 // import List from "./List"
 import Input from "./Input";
 import Table from "./Table";
+import Header from "./Header";
 
 function App() {
   const [list, setList] = useState([]);
@@ -80,36 +81,42 @@ function App() {
   };
 
   return (
-    <div className="app">
-      <h1>TODOS</h1>
+    <div className="app ">
+      <div
+        className="card,app__card, mx-auto border "
+        style={{ width: "40rem" }}
+      >
+        <Header />
 
-      <Input
-        value={input}
-        onChange={handleInputChange}
-        onSubmit={handleAddTask}
-      />
+        <Input
+          className="w-50"
+          value={input}
+          onChange={handleInputChange}
+          onSubmit={handleAddTask}
+        />
 
-      <Table
-        data={filteredList}
-        onChangeCheckBox={onChangeTaskStatus}
-        onEdit={onEditHandle}
-        onDelete={onDeleteHandle}
-        activeIndex={activeEditIndex}
-        onChangeTaskName={onChangeTaskName}
-        onEnterTaskName={onEnterTaskName}
-      />
+        <Table
+          data={filteredList}
+          onChangeCheckBox={onChangeTaskStatus}
+          onEdit={onEditHandle}
+          onDelete={onDeleteHandle}
+          activeIndex={activeEditIndex}
+          onChangeTaskName={onChangeTaskName}
+          onEnterTaskName={onEnterTaskName}
+        />
 
-      {/* <List
+        {/* <List
        data={filteredList}
        onChangeCheckBox={onChangeTaskStatus}
        />
         */}
-      <Footer
-        showAllTasks={showAllTasks}
-        showActiveTasks={showActiveTasks}
-        showCompletedTasks={showCompletedTasks}
-        clearCompletedTasks={clearCompletedTasks}
-      />
+        <Footer
+          showAllTasks={showAllTasks}
+          showActiveTasks={showActiveTasks}
+          showCompletedTasks={showCompletedTasks}
+          clearCompletedTasks={clearCompletedTasks}
+        />
+      </div>
     </div>
   );
 }
