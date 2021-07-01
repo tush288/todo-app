@@ -8,15 +8,15 @@ function Table(props) {
       <table className="table table-success table-striped table">
         <thead>
           <tr>
-            <th>Status</th>
-            <th>Name</th>
-            <th>Action</th>
+            <th scope="col">Status</th>
+            <th scope="col">Name</th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
           {props.data.map((item, index) => (
             <tr key={index}>
-              <td scope="row">
+              <td>
                 <Checkbox
                   className="app__list__checkbox"
                   type="checkbox"
