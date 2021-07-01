@@ -8,9 +8,9 @@ function Table(props) {
       <table className="table table-success table-striped table">
         <thead>
           <tr>
-            <th scope="col">Status</th>
-            <th scope="col">Name</th>
-            <th scope="col">Action</th>
+            <th>Status</th>
+            <th>Name</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>

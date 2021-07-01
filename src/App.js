@@ -7,7 +7,6 @@ import Input from "./Input";
 import Table from "./Table";
 import Header from "./Header";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { card } from "react-bootstrap";
 
 function App() {
   const [list, setList] = useState([]);
