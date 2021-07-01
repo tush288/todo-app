@@ -108,12 +108,14 @@ function App() {
        onChangeCheckBox={onChangeTaskStatus}
        />
         */}
-      <Footer
-        showAllTasks={showAllTasks}
-        showActiveTasks={showActiveTasks}
-        showCompletedTasks={showCompletedTasks}
-        clearCompletedTasks={clearCompletedTasks}
-      />
+      {filteredList.length !== 0 && (
+        <Footer
+          showAllTasks={showAllTasks}
+          showActiveTasks={showActiveTasks}
+          showCompletedTasks={showCompletedTasks}
+          clearCompletedTasks={clearCompletedTasks}
+        />
+      )}
     </div>
   );
 }

@@ -5,7 +5,7 @@ import "./Table.css";
 function Table(props) {
   return (
     <div>
-      <table className="table table-success table-striped table">
+      <table className="table table table-dark table-hover">
         <thead>
           <tr>
             <th scope="col">Status</th>
