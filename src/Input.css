@@ -1,3 +1,8 @@
-.app__input{
-    margin-bottom: 20px;
+.app__input {
+  margin-bottom: 20px;
+}
+.app__input__input {
+  background-color: rgb(248, 237, 237);
+  border: 1px solid rgb(185, 178, 178);
+  margin-right: 10px;
 }

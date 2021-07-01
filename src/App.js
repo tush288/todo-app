@@ -6,6 +6,8 @@ import Footer from "./Footer";
 import Input from "./Input";
 import Table from "./Table";
 import Header from "./Header";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { card } from "react-bootstrap";
 
 function App() {
   const [list, setList] = useState([]);
@@ -81,20 +83,16 @@ function App() {
   };
 
   return (
-    <div className="app ">
-      <div
-        className="card,app__card, mx-auto border "
-        style={{ width: "40rem" }}
-      >
-        <Header />
+    <div className="app">
+      <Header />
 
-        <Input
-          className="w-50"
-          value={input}
-          onChange={handleInputChange}
-          onSubmit={handleAddTask}
-        />
-
+      <Input
+        className="h"
+        value={input}
+        onChange={handleInputChange}
+        onSubmit={handleAddTask}
+      />
+      {filteredList.length !== 0 && (
         <Table
           data={filteredList}
           onChangeCheckBox={onChangeTaskStatus}
@@ -104,19 +102,19 @@ function App() {
           onChangeTaskName={onChangeTaskName}
           onEnterTaskName={onEnterTaskName}
         />
+      )}
 
-        {/* <List
+      {/* <List
        data={filteredList}
        onChangeCheckBox={onChangeTaskStatus}
        />
         */}
-        <Footer
-          showAllTasks={showAllTasks}
-          showActiveTasks={showActiveTasks}
-          showCompletedTasks={showCompletedTasks}
-          clearCompletedTasks={clearCompletedTasks}
-        />
-      </div>
+      <Footer
+        showAllTasks={showAllTasks}
+        showActiveTasks={showActiveTasks}
+        showCompletedTasks={showCompletedTasks}
+        clearCompletedTasks={clearCompletedTasks}
+      />
     </div>
   );
 }

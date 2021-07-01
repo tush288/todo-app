@@ -1,6 +1,8 @@
-.table__button__delete {
-  margin-left: 20px;
+.table {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }
-.table__button__edit {
+.table_button_edit {
   margin-right: 10px;
+  background-color: rgb(196, 158, 231);
 }

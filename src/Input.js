@@ -7,9 +7,10 @@ function InputWithSubmit(props) {
   return (
     <div className="app__input">
       <Input
+        className="app__input__input"
         value={props.value}
         type="text"
-        placeholder="enter the task "
+        placeholder="Enter the task "
         onChange={props.onChange}
         onPressEnter={props.onSubmit}
       />

@@ -5,7 +5,7 @@ import "./Table.css";
 function Table(props) {
   return (
     <div>
-      <table className="table table-dark table-striped">
+      <table className="table table-success table-striped table">
         <thead>
           <tr>
             <th scope="col">Status</th>
@@ -37,7 +37,7 @@ function Table(props) {
               </td>
               <td>
                 <Button
-                  className="table__button__edit,btn btn-warning,btn btn-warning btn-sm"
+                  className="btn btn-warning table_button_edit "
                   onClick={() => props.onEdit(index)}
                 >
                   edit
@@ -50,9 +50,7 @@ function Table(props) {
                   okText="Yes"
                   cancelText="No"
                 >
-                  <Button className="m-2,btn btn-outline-danger,btn btn-danger btn-sm">
-                    delete
-                  </Button>
+                  <Button className="btn btn-danger">delete</Button>
                 </Popconfirm>
               </td>
             </tr>

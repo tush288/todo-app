@@ -1,18 +1,38 @@
-import React from 'react'
-import 'antd/dist/antd.css';
-import  {Button} from 'antd';
+import React from "react";
+import "antd/dist/antd.css";
+import { Button } from "antd";
+import "./Footer.css";
 
 function Footer(props) {
-    return (
-        <div>
-            <Button onClick={props.showAllTasks}>All</Button>
-      <Button onClick={props.showActiveTasks}>Active</Button>
-      <Button onClick={props.showCompletedTasks}>Completed</Button>
+  return (
+    <div>
+      <Button
+        className="btn btn-secondary footer_button"
+        onClick={props.showAllTasks}
+      >
+        All
+      </Button>
+      <Button
+        className="btn btn-secondary footer_button"
+        onClick={props.showActiveTasks}
+      >
+        Active
+      </Button>
+      <Button
+        className="btn btn-secondary footer_button"
+        onClick={props.showCompletedTasks}
+      >
+        Completed
+      </Button>
 
-      <Button onClick={props.clearCompletedTasks}>Clear Completed</Button> 
-
-        </div>
-    )
+      <Button
+        className="btn btn-secondary footer_button"
+        onClick={props.clearCompletedTasks}
+      >
+        Clear Completed
+      </Button>
+    </div>
+  );
 }
 
-export default Footer
+export default Footer;
