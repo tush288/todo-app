@@ -1,8 +1,17 @@
 import React from "react";
 import { Checkbox, Button, Popconfirm, Input } from "antd";
 import "./Table.css";
+import { useState } from "react";
+import moment from "moment";
+import DateTimePicker from "react-datetime-picker";
+import { BsFillClockFill } from "react-icons/bs";
+import { List } from "rc-field-form";
 
 function Table(props) {
+  // const [value, onChange] = useState(new Date());
+  // const [show, setShow] = useState(false);
+  console.log(props.data);
+
   return (
     <div>
       <table className="table table table-dark table-hover">
@@ -10,7 +19,11 @@ function Table(props) {
           <tr>
             <th scope="col">Status</th>
             <th scope="col">Name</th>
+            <th scope="col">Time</th>
             <th scope="col">Action</th>
+            <th scope="col">
+              <Button onClick={props.handleSort}>sort</Button>
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -36,6 +49,16 @@ function Table(props) {
                 )}
               </td>
               <td>
+                {/* {moment(item.date).format("Do MMM YY,h:mm a")} */}
+
+                <DateTimePicker
+                  value={item.date}
+                  onChange={(date) => props.onDateChange(index, date)}
+                ></DateTimePicker>
+
+                <BsFillClockFill />
+              </td>
+              <td>
                 <Button
                   className="btn btn-warning table_button_edit "
                   onClick={() => props.onEdit(index)}
@@ -53,6 +76,7 @@ function Table(props) {
                   <Button className="btn btn-danger">delete</Button>
                 </Popconfirm>
               </td>
+              <td></td>
             </tr>
           ))}
         </tbody>

@@ -19,11 +19,27 @@ function App() {
   }, [list]);
 
   const handleAddTask = (e) => {
-    const newTask = { name: input, status: false };
+    const newTask = { name: input, status: false, date: new Date() };
     const data = [...list, newTask];
     setList(data);
     setInput("");
     console.log(list);
+  };
+  const onDateChange = (index, date) => {
+    console.log(index, date);
+    const task = { ...list[index], date: date };
+
+    const updatedList = [...list];
+
+    updatedList[index] = task;
+
+    setList(updatedList);
+  };
+  const handleSort = () => {
+    const updatedList = [...list];
+
+    updatedList.sort((a, b) => a.date.getTime() - b.date.getTime());
+    setList(updatedList);
   };
   const handleInputChange = (e) => setInput(e.target.value);
 
@@ -100,6 +116,8 @@ function App() {
           activeIndex={activeEditIndex}
           onChangeTaskName={onChangeTaskName}
           onEnterTaskName={onEnterTaskName}
+          onDateChange={onDateChange}
+          handleSort={handleSort}
         />
       )}
 
