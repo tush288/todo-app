@@ -54,9 +54,9 @@ function Table(props) {
                 <DateTimePicker
                   value={item.date}
                   onChange={(date) => props.onDateChange(index, date)}
+                  calendarIcon={<BsFillClockFill />}
+                  format="y-MM-dd h:mm a"
                 ></DateTimePicker>
-
-                <BsFillClockFill />
               </td>
               <td>
                 <Button
