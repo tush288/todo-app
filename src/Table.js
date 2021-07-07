@@ -10,6 +10,7 @@ import { List } from "rc-field-form";
 function Table(props) {
   // const [value, onChange] = useState(new Date());
   // const [show, setShow] = useState(false);
+  // const [currentSort, setCurrentSort] = useState("asc");
   console.log(props.data);
 
   return (

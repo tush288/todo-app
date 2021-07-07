@@ -13,6 +13,7 @@ function App() {
   const [input, setInput] = useState("");
   const [filteredList, setFilteredList] = useState(list);
   const [activeEditIndex, setActiveEditIndex] = useState(null);
+  const [sort, setSort] = useState("asc");
 
   useEffect(() => {
     setFilteredList(list);
@@ -25,6 +26,20 @@ function App() {
     setInput("");
     console.log(list);
   };
+
+  const handleSort = () => {
+    const updatedList = [...list];
+    if (sort === "asc") {
+      updatedList.sort((a, b) => a.date.getTime() - b.date.getTime());
+      setList(updatedList);
+      setSort("desc");
+    } else {
+      updatedList.sort((a, b) => b.date.getTime() - a.date.getTime());
+      setSort("asc");
+    }
+    setList(updatedList);
+  };
+
   const onDateChange = (index, date) => {
     console.log(index, date);
     const task = { ...list[index], date: date };
@@ -35,12 +50,7 @@ function App() {
 
     setList(updatedList);
   };
-  const handleSort = () => {
-    const updatedList = [...list];
 
-    updatedList.sort((a, b) => a.date.getTime() - b.date.getTime());
-    setList(updatedList);
-  };
   const handleInputChange = (e) => setInput(e.target.value);
 
   const onChangeTaskStatus = (e, index) => {
@@ -118,6 +128,7 @@ function App() {
           onEnterTaskName={onEnterTaskName}
           onDateChange={onDateChange}
           handleSort={handleSort}
+          list={list}
         />
       )}
 
