@@ -18,7 +18,7 @@ function Table(props) {
     <div>
       <Modal.Dialog>
         <Modal.Header closeButton>
-          <Modal.Title>Modal title</Modal.Title>
+          <Modal.Title>tasks</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
@@ -28,7 +28,7 @@ function Table(props) {
                 <th scope="col">Status</th>
                 <th scope="col">Name</th>
                 <th scope="col">Time</th>
-                <th scope="col">Action</th>
+                {/* <th scope="col">Action</th> */}
                 <th scope="col">
                   <Button onClick={props.handleSort}>sort</Button>
                 </th>
@@ -56,34 +56,37 @@ function Table(props) {
                       />
                     )}
                   </td>
-                  <td>
-                    {/* {moment(item.date).format("Do MMM YY,h:mm a")} */}
+                  <div className="table_data">
+                    <td>
+                      <DateTimePicker
+                        className="table_data_datepicker"
+                        value={item.date}
+                        onChange={(date) => props.onDateChange(index, date)}
+                        calendarIcon={<BsFillClockFill />}
+                        format="y-MM-dd h:mm a"
+                      ></DateTimePicker>
+                    </td>
+                    <div className="table_data_buttons">
+                      <td>
+                        <Button
+                          className="btn btn-warning table_button_edit "
+                          onClick={() => props.onEdit(index)}
+                        >
+                          edit
+                        </Button>
 
-                    <DateTimePicker
-                      value={item.date}
-                      onChange={(date) => props.onDateChange(index, date)}
-                      calendarIcon={<BsFillClockFill />}
-                      format="y-MM-dd h:mm a"
-                    ></DateTimePicker>
-                  </td>
-                  <td>
-                    <Button
-                      className="btn btn-warning table_button_edit "
-                      onClick={() => props.onEdit(index)}
-                    >
-                      edit
-                    </Button>
-
-                    <Popconfirm
-                      title="Are you sure to delete this task?"
-                      onConfirm={() => props.onDelete(index)}
-                      onCancel={() => {}}
-                      okText="Yes"
-                      cancelText="No"
-                    >
-                      <Button className="btn btn-danger">delete</Button>
-                    </Popconfirm>
-                  </td>
+                        <Popconfirm
+                          title="Are you sure to delete this task?"
+                          onConfirm={() => props.onDelete(index)}
+                          onCancel={() => {}}
+                          okText="Yes"
+                          cancelText="No"
+                        >
+                          <Button className="btn btn-danger">delete</Button>
+                        </Popconfirm>
+                      </td>
+                    </div>
+                  </div>
                   <td></td>
                 </tr>
               ))}
@@ -92,8 +95,33 @@ function Table(props) {
         </Modal.Body>
 
         <Modal.Footer>
-          <Button variant="secondary">Close</Button>
-          <Button variant="primary">Save changes</Button>
+          <div>
+            <Button
+              className="btn btn-secondary footer_button"
+              onClick={props.showAllTasks}
+            >
+              All
+            </Button>
+            <Button
+              className="btn btn-secondary footer_button"
+              onClick={props.showActiveTasks}
+            >
+              Active
+            </Button>
+            <Button
+              className="btn btn-secondary footer_button"
+              onClick={props.showCompletedTasks}
+            >
+              Completed
+            </Button>
+
+            <Button
+              className="btn btn-secondary footer_button"
+              onClick={props.clearCompletedTasks}
+            >
+              Clear Completed
+            </Button>
+          </div>
         </Modal.Footer>
       </Modal.Dialog>
     </div>

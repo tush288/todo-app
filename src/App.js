@@ -2,7 +2,7 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import "antd/dist/antd.css";
 import Footer from "./Footer";
-// import List from "./List"
+import List from "./List";
 import Input from "./Input";
 import Table from "./Table";
 import Header from "./Header";
@@ -117,7 +117,7 @@ function App() {
         onChange={handleInputChange}
         onSubmit={handleAddTask}
       />
-      {filteredList.length !== 0 && (
+      {/* {filteredList.length !== 0 && (
         <Table
           data={filteredList}
           onChangeCheckBox={onChangeTaskStatus}
@@ -130,21 +130,31 @@ function App() {
           handleSort={handleSort}
           list={list}
         />
+      )} */}
+      {filteredList.length !== 0 && (
+        <List
+          data={filteredList}
+          onChangeCheckBox={onChangeTaskStatus}
+          onChangeTaskName={onChangeTaskName}
+          showAllTasks={showAllTasks}
+          showActiveTasks={showActiveTasks}
+          showCompletedTasks={showCompletedTasks}
+          clearCompletedTasks={clearCompletedTasks}
+          activeIndex={activeEditIndex}
+          onEnterTaskName={onEnterTaskName}
+          onEdit={onEditHandle}
+          onDelete={onDeleteHandle}
+        />
       )}
 
-      {/* <List
-       data={filteredList}
-       onChangeCheckBox={onChangeTaskStatus}
-       />
-        */}
-      {filteredList.length !== 0 && (
+      {/* {filteredList.length !== 0 && (
         <Footer
           showAllTasks={showAllTasks}
           showActiveTasks={showActiveTasks}
           showCompletedTasks={showCompletedTasks}
           clearCompletedTasks={clearCompletedTasks}
         />
-      )}
+      )} */}
     </div>
   );
 }

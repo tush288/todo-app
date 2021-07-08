@@ -1,7 +1,19 @@
 .table {
   border-top: 1px solid black;
   border-bottom: 1px solid black;
+  table-layout: fixed;
+  word-wrap: break-word;
 }
 .table_button_edit {
   margin-right: 10px;
+}
+.table_data {
+  display: flex;
+  flex-direction: column;
+}
+/* .table_data_datepicker {
+  box-sizing: border-box;
+} */
+.table_data_buttons {
+  display: flex;
 }

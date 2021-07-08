@@ -1,6 +1,25 @@
-.app__list{
-    margin-bottom: 20px;
+.list {
+  display: flex;
 }
-.app__list__checkbox{
-    margin-right: 5px;
+/* .list_modal{
+    border: none;
+} */
+.app__list {
+  margin-bottom: 20px;
+  width: 100%;
+}
+.app__list__checkbox {
+  margin-right: 5px;
+}
+.list_input {
+  width: 100%;
+}
+.list_mapitem {
+  font-size: large;
+  font-family: "Raleway", sans-serif;
+}
+.list_buttons {
+  display: flex;
+}
+.table_data_datepicker {
 }
