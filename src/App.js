@@ -131,22 +131,22 @@ function App() {
           list={list}
         />
       )} */}
-      {filteredList.length !== 0 && (
-        <List
-          data={filteredList}
-          onChangeCheckBox={onChangeTaskStatus}
-          onChangeTaskName={onChangeTaskName}
-          showAllTasks={showAllTasks}
-          showActiveTasks={showActiveTasks}
-          showCompletedTasks={showCompletedTasks}
-          clearCompletedTasks={clearCompletedTasks}
-          activeIndex={activeEditIndex}
-          onEnterTaskName={onEnterTaskName}
-          onEdit={onEditHandle}
-          onDelete={onDeleteHandle}
-          handleSort={handleSort}
-        />
-      )}
+      {/* {filteredList.length !== 0 && ( */}
+      <List
+        data={filteredList}
+        onChangeCheckBox={onChangeTaskStatus}
+        onChangeTaskName={onChangeTaskName}
+        showAllTasks={showAllTasks}
+        showActiveTasks={showActiveTasks}
+        showCompletedTasks={showCompletedTasks}
+        clearCompletedTasks={clearCompletedTasks}
+        activeIndex={activeEditIndex}
+        onEnterTaskName={onEnterTaskName}
+        onEdit={onEditHandle}
+        onDelete={onDeleteHandle}
+        handleSort={handleSort}
+      />
+      {/* )} */}
 
       {/* {filteredList.length !== 0 && (
         <Footer

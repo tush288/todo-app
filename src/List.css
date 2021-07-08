@@ -30,3 +30,6 @@
   display: flex;
   flex-direction: column;
 }
+.list_icons {
+  display: flex;
+}

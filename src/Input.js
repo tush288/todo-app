@@ -5,7 +5,7 @@ import "./Input.css";
 
 function InputWithSubmit(props) {
   return (
-    <div className="app__input">
+    <div className="app__input w-25">
       <Input
         className="app__input__input"
         value={props.value}

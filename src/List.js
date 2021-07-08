@@ -1,6 +1,8 @@
 import React from "react";
 import "antd/dist/antd.css";
 import { List, Typography, Checkbox, Input, Button, Popconfirm } from "antd";
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+
 import "./List.css";
 import DateTimePicker from "react-datetime-picker";
 import { BsFillClockFill } from "react-icons/bs";
@@ -9,17 +11,17 @@ import { Modal, Nav } from "react-bootstrap";
 function TodoList(props) {
   // const [active, setActive] = useState("all");
   return (
-    <div className="list_modal">
-      <Modal.Dialog>
-        <Modal.Header closeButton>
-          <Modal.Title>
-            Tasks
-            <Button onClick={props.handleSort}>sort</Button>
-          </Modal.Title>
+    <div className="list_modal w-100">
+      <Modal.Dialog className="shadow-lg">
+        <Modal.Header className="d-flex justify-content-between">
+          <Modal.Title>Tasks</Modal.Title>
+          <Button className="mt-2" onClick={props.handleSort}>
+            sort
+          </Button>
         </Modal.Header>
 
         <Modal.Body>
-          <div className="list">
+          <div className="list mx-auto w-100">
             <List
               dataSource={props.data}
               renderItem={(item, index) => (
@@ -54,13 +56,17 @@ function TodoList(props) {
                       format="y-MM-dd h:mm a"
                     ></DateTimePicker>
                   </div> */}
-                  <div className="list_buttons">
-                    <Button
+                  <div className="list_icons ">
+                    {/* <Button
                       className=" btn "
                       onClick={() => props.onEdit(index)}
                     >
                       edit
-                    </Button>
+                    </Button> */}
+                    <EditOutlined
+                      style={{ fontSize: "25px", marginLeft: "-10%" }}
+                      onClick={() => props.onEdit(index)}
+                    />
 
                     <Popconfirm
                       title="Are you sure to delete this task?"
@@ -69,7 +75,12 @@ function TodoList(props) {
                       okText="Yes"
                       cancelText="No"
                     >
-                      <Button className="btn ">delete</Button>
+                      <DeleteOutlined
+                        style={{
+                          fontSize: "25px",
+                          marginLeft: "20%",
+                        }}
+                      />
                     </Popconfirm>
                   </div>
                 </List.Item>
@@ -79,14 +90,10 @@ function TodoList(props) {
         </Modal.Body>
 
         <Modal.Footer>
-          <div className="list_nav">
+          <div className="list_nav mx-auto">
             <Nav variant="pills" defaultActiveKey="/home">
               <Nav.Item>
-                <Nav.Link
-                  onChange={(e) => console.log(e, "e")}
-                  eventKey="1"
-                  onClick={props.showAllTasks}
-                >
+                <Nav.Link eventKey="1" onClick={props.showAllTasks}>
                   all
                 </Nav.Link>
               </Nav.Item>
@@ -94,7 +101,6 @@ function TodoList(props) {
                 <Nav.Link
                   eventKey="2"
                   data-toggle="tab"
-                  active
                   onClick={props.showActiveTasks}
                 >
                   active
