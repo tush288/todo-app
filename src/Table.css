@@ -4,9 +4,7 @@
   table-layout: fixed;
   word-wrap: break-word;
 }
-.table_button_edit {
-  margin-right: 10px;
-}
+
 .table_data {
   display: flex;
   flex-direction: column;

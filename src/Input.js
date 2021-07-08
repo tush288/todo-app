@@ -20,7 +20,7 @@ function InputWithSubmit(props) {
         className="app__button,btn btn-success"
         onClick={props.onSubmit}
       >
-        add{" "}
+        add
       </Button>
     </div>
   );

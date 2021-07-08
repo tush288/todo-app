@@ -4,7 +4,7 @@ import "antd/dist/antd.css";
 import Footer from "./Footer";
 import List from "./List";
 import Input from "./Input";
-import Table from "./Table";
+// import Table from "./Table";
 import Header from "./Header";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -144,6 +144,7 @@ function App() {
           onEnterTaskName={onEnterTaskName}
           onEdit={onEditHandle}
           onDelete={onDeleteHandle}
+          handleSort={handleSort}
         />
       )}
 

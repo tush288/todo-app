@@ -1,9 +1,10 @@
-.list {
-  display: flex;
+.list_modal {
+  display: table;
 }
-/* .list_modal{
-    border: none;
-} */
+.list {
+  width: fit-content;
+}
+
 .app__list {
   margin-bottom: 20px;
   width: 100%;
@@ -12,14 +13,20 @@
   margin-right: 5px;
 }
 .list_input {
-  width: 100%;
+  width: fit-content;
 }
 .list_mapitem {
-  font-size: large;
+  font-size: x-large;
   font-family: "Raleway", sans-serif;
 }
 .list_buttons {
   display: flex;
+  margin-left: 20px;
 }
-.table_data_datepicker {
+.list_checkbox {
+  margin-right: 10px;
+}
+.list_nav {
+  display: flex;
+  flex-direction: column;
 }

@@ -4,9 +4,10 @@ import { List, Typography, Checkbox, Input, Button, Popconfirm } from "antd";
 import "./List.css";
 import DateTimePicker from "react-datetime-picker";
 import { BsFillClockFill } from "react-icons/bs";
-import { Modal } from "react-bootstrap";
+import { Modal, Nav } from "react-bootstrap";
 
 function TodoList(props) {
+  // const [active, setActive] = useState("all");
   return (
     <div className="list_modal">
       <Modal.Dialog>
@@ -20,41 +21,42 @@ function TodoList(props) {
         <Modal.Body>
           <div className="list">
             <List
-              className="app__list"
-              bordered
               dataSource={props.data}
               renderItem={(item, index) => (
                 <List.Item>
                   <Typography.Text mark>
-                    <Checkbox
-                      className="app__list__checkbox"
-                      type="checkbox"
-                      checked={props.data[index].status}
-                      onChange={(e) => props.onChangeCheckBox(e, index)}
-                    />
+                    <div className="list_checkbox">
+                      <Checkbox
+                        type="checkbox"
+                        checked={props.data[index].status}
+                        onChange={(e) => props.onChangeCheckBox(e, index)}
+                      />
+                    </div>
                   </Typography.Text>
                   {props.activeIndex !== index ? (
                     <div className="list_mapitem">{item.name}</div>
                   ) : (
-                    <Input
-                      className="list_input"
-                      value={item.name}
-                      onChange={(e) => props.onChangeTaskName(e, index)}
-                      onPressEnter={(e) => props.onEnterTaskName(e, index)}
-                    />
+                    <div className="list_input">
+                      <Input
+                        value={item.name}
+                        onChange={(e) => props.onChangeTaskName(e, index)}
+                        onPressEnter={(e) => props.onEnterTaskName(e, index)}
+                      />
+                    </div>
                   )}
-                  <div className="table_data_datepicker">
+
+                  {/* <div className="table_data_datepicker">
                     <DateTimePicker
                       className="table_data_datepicker"
                       value={item.date}
                       onChange={(date) => props.onDateChange(index, date)}
-                      calendarIcon={<BsFillClockFill />}
+                      // calendarIcon={<BsFillClockFill />}
                       format="y-MM-dd h:mm a"
                     ></DateTimePicker>
-                  </div>
+                  </div> */}
                   <div className="list_buttons">
                     <Button
-                      className="btn btn-warning table_button_edit "
+                      className=" btn "
                       onClick={() => props.onEdit(index)}
                     >
                       edit
@@ -67,7 +69,7 @@ function TodoList(props) {
                       okText="Yes"
                       cancelText="No"
                     >
-                      <Button className="btn btn-danger">delete</Button>
+                      <Button className="btn ">delete</Button>
                     </Popconfirm>
                   </div>
                 </List.Item>
@@ -77,32 +79,38 @@ function TodoList(props) {
         </Modal.Body>
 
         <Modal.Footer>
-          <div>
-            <Button
-              className="btn btn-secondary footer_button"
-              onClick={props.showAllTasks}
-            >
-              All
-            </Button>
-            <Button
-              className="btn btn-secondary footer_button"
-              onClick={props.showActiveTasks}
-            >
-              Active
-            </Button>
-            <Button
-              className="btn btn-secondary footer_button"
-              onClick={props.showCompletedTasks}
-            >
-              Completed
-            </Button>
-
-            <Button
-              className="btn btn-secondary footer_button"
-              onClick={props.clearCompletedTasks}
-            >
-              Clear Completed
-            </Button>
+          <div className="list_nav">
+            <Nav variant="pills" defaultActiveKey="/home">
+              <Nav.Item>
+                <Nav.Link
+                  onChange={(e) => console.log(e, "e")}
+                  eventKey="1"
+                  onClick={props.showAllTasks}
+                >
+                  all
+                </Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link
+                  eventKey="2"
+                  data-toggle="tab"
+                  active
+                  onClick={props.showActiveTasks}
+                >
+                  active
+                </Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="3" onClick={props.showCompletedTasks}>
+                  completed
+                </Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="4" onClick={props.clearCompletedTasks}>
+                  clear completed
+                </Nav.Link>
+              </Nav.Item>
+            </Nav>
           </div>
         </Modal.Footer>
       </Modal.Dialog>
