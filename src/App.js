@@ -20,11 +20,15 @@ function App() {
   }, [list]);
 
   const handleAddTask = (e) => {
-    const newTask = { name: input, status: false, date: new Date() };
-    const data = [...list, newTask];
-    setList(data);
-    setInput("");
-    console.log(list);
+    if (!input) {
+      console.log("enter");
+    } else {
+      const newTask = { name: input, status: false, date: new Date() };
+      const data = [...list, newTask];
+      setList(data);
+      setInput("");
+      console.log(list);
+    }
   };
 
   const handleSort = () => {
