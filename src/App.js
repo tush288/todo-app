@@ -14,10 +14,25 @@ function App() {
   const [filteredList, setFilteredList] = useState(list);
   const [activeEditIndex, setActiveEditIndex] = useState(null);
   const [sort, setSort] = useState("asc");
+  const [status, setStatus] = useState("all");
+
+  // useEffect(() => {
+  //   setFilteredList(list);
+  // }, [list]);
 
   useEffect(() => {
-    setFilteredList(list);
-  }, [list]);
+    console.log(status);
+    let updatedList = [];
+    if (status === "active") {
+      updatedList = list.filter((task) => !task.status);
+      setFilteredList(updatedList);
+    } else if (status === "completed") {
+      updatedList = list.filter((task) => task.status);
+      setFilteredList(updatedList);
+    } else {
+      setFilteredList(list);
+    }
+  }, [status, list]);
 
   const handleAddTask = (e) => {
     if (!input) {
@@ -71,16 +86,17 @@ function App() {
   };
 
   const showAllTasks = () => {
-    setFilteredList(list);
+    // setFilteredList(list);
+    setStatus("all");
     console.log(list);
   };
   const showActiveTasks = () => {
-    const activeTasksList = list.filter((task) => !task.status);
-    setFilteredList(activeTasksList);
+    setStatus("active");
+    // setFilteredList(activeTasksList);
   };
   const showCompletedTasks = () => {
-    const completedTasksList = list.filter((task) => task.status);
-    setFilteredList(completedTasksList);
+    setStatus("completed");
+    // setFilteredList(completedTasksList);
   };
   const clearCompletedTasks = () => {
     const activeTasksList = list.filter((task) => !task.status);
