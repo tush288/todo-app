@@ -1,11 +1,11 @@
 export const addTodo = () => {
   return {
-    type: add_todo,
+    type: "add_todo",
   };
 };
 
 export const deleteTodo = () => {
   return {
-    type: delete_todo,
+    type: "delete_todo",
   };
 };

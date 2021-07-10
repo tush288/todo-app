@@ -1,8 +1,8 @@
-const initislaState = {
+const initialState = {
   data: [],
 };
 
-const todos = (state, action) => {
+const todos = (state = initialState, action) => {
   switch (action.type) {
     case "add_todo":
       return {};

@@ -2,6 +2,7 @@ import React from "react";
 import "antd/dist/antd.css";
 import { Input, Button } from "antd";
 import "./Input.css";
+import { addTodo } from "./Actions";
 
 function InputWithSubmit(props) {
   return (
