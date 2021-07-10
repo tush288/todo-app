@@ -8,8 +8,10 @@ import Input from "./Input";
 import Header from "./Header";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Main.css";
+import { connect } from "react-redux";
+import { addTodo } from "./Actions";
 
-function Main() {
+function Main(props) {
   const [list, setList] = useState([]);
   const [input, setInput] = useState("");
   const [filteredList, setFilteredList] = useState(list);
@@ -17,9 +19,7 @@ function Main() {
   const [sort, setSort] = useState("asc");
   const [status, setStatus] = useState("all");
 
-  // useEffect(() => {
-  //   setFilteredList(list);
-  // }, [list]);
+  console.log("props", props.list);
 
   useEffect(() => {
     console.log(status);
@@ -40,10 +40,12 @@ function Main() {
       console.log("enter");
     } else {
       const newTask = { name: input, status: false, date: new Date() };
+      console.log("list", props.list);
+
+      props.addTodo(newTask);
       const data = [...list, newTask];
       setList(data);
       setInput("");
-      console.log(list);
     }
   };
 
@@ -180,4 +182,15 @@ function Main() {
   );
 }
 
-export default Main;
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    // list: state.data,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addTodo: (task) => dispatch(addTodo(task)),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

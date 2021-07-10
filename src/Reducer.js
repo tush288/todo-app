@@ -5,7 +5,10 @@ const initialState = {
 const todos = (state = initialState, action) => {
   switch (action.type) {
     case "add_todo":
-      return {};
+      return {
+        ...state,
+        data: [...state.data, action.task],
+      };
     case "delete_todo":
       return {};
     default:
