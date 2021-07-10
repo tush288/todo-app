@@ -4,8 +4,8 @@ import { List, Typography, Checkbox, Input, Button, Popconfirm } from "antd";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 
 import "./List.css";
-import DateTimePicker from "react-datetime-picker";
-import { BsFillClockFill } from "react-icons/bs";
+// import DateTimePicker from "react-datetime-picker";
+// import { BsFillClockFill } from "react-icons/bs";
 import { Modal, Nav } from "react-bootstrap";
 
 function TodoList(props) {
