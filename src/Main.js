@@ -17,7 +17,7 @@ function Main(props) {
   const [sort, setSort] = useState("asc");
   const [status, setStatus] = useState("all");
 
-  const { list, addTodo, deleteTodo, filteredList } = props;
+  const { list, addTodo, deleteTodo, updateState, filteredList } = props;
 
   useEffect(() => {
     let updatedList = [];
