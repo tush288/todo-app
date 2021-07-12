@@ -4,12 +4,10 @@ import { List, Typography, Checkbox, Input, Button, Popconfirm } from "antd";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 
 import "./List.css";
-import DateTimePicker from "react-datetime-picker";
-import { BsFillClockFill } from "react-icons/bs";
+
 import { Modal, Nav } from "react-bootstrap";
 
 function TodoList(props) {
-  // const [active, setActive] = useState("all");
   return (
     <div className="list_modal w-100">
       <Modal.Dialog className="shadow-lg">
@@ -47,22 +45,7 @@ function TodoList(props) {
                     </div>
                   )}
 
-                  {/* <div className="table_data_datepicker">
-                    <DateTimePicker
-                      className="table_data_datepicker"
-                      value={item.date}
-                      onChange={(date) => props.onDateChange(index, date)}
-                      // calendarIcon={<BsFillClockFill />}
-                      format="y-MM-dd h:mm a"
-                    ></DateTimePicker>
-                  </div> */}
                   <div className="list_icons ">
-                    {/* <Button
-                      className=" btn "
-                      onClick={() => props.onEdit(index)}
-                    >
-                      edit
-                    </Button> */}
                     <EditOutlined
                       style={{ fontSize: "25px", marginLeft: "-10%" }}
                       onClick={() => props.onEdit(index)}
