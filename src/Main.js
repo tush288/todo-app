@@ -9,12 +9,10 @@ import Header from "./Header";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Main.css";
 import { connect } from "react-redux";
-import { addTodo } from "./Actions";
+import { addTodo, updateState } from "./Actions";
 
 function Main(props) {
-  const [list, setList] = useState([]);
   const [input, setInput] = useState("");
-  const [filteredList, setFilteredList] = useState(list);
   const [activeEditIndex, setActiveEditIndex] = useState(null);
   const [sort, setSort] = useState("asc");
   const [status, setStatus] = useState("all");
@@ -26,12 +24,15 @@ function Main(props) {
     let updatedList = [];
     if (status === "active") {
       updatedList = list.filter((task) => !task.status);
-      setFilteredList(updatedList);
+      // setFilteredList(updatedList);
+      updateState({ filteredList: updatedList });
     } else if (status === "completed") {
       updatedList = list.filter((task) => task.status);
-      setFilteredList(updatedList);
+      // setFilteredList(updatedList);
+      updateState({ filteredList: updatedList });
     } else {
-      setFilteredList(list);
+      // setFilteredList(list);
+      updateState({ filteredList: updatedList });
     }
   }, [status, list]);
 
@@ -183,9 +184,10 @@ function Main(props) {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
+  // console.log(state);
   return {
-    // list: state.data,
+    list: state.list,
+    filetereList: state.filteredList,
   };
 };
 const mapDispatchToProps = (dispatch) => {

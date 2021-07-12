@@ -1,15 +1,21 @@
 const initialState = {
-  data: [],
+  list: [],
+  filetereList: [],
 };
 
 const todos = (state = initialState, action) => {
   switch (action.type) {
-    case "add_todo":
+    case "UPDATE_STATE":
       return {
         ...state,
-        data: [...state.data, action.task],
+        ...action.payload,
       };
-    case "delete_todo":
+    case "ADD_TODO":
+      return {
+        ...state,
+        list: [...state, action.task],
+      };
+    case "DELETE_TODO":
       return {};
     default:
       return state;

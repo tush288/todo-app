@@ -1,14 +1,18 @@
+export const updateState = (payload) => ({
+  type: "UPDATE_STATE",
+  payload,
+});
 export const addTodo = (task) => {
-  console.log("task", task);
+  //   console.log("task", task);
   return {
-    type: "add_todo",
+    type: "ADD_TODO",
     task,
   };
 };
 
 export const deleteTodo = (task) => {
   return {
-    type: "delete_todo",
+    type: "DELETE_TODO",
     task,
   };
 };
