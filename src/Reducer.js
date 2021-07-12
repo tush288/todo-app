@@ -1,6 +1,6 @@
 const initialState = {
   list: [],
-  filetereList: [],
+  filteredList: [],
 };
 
 const todos = (state = initialState, action) => {
@@ -13,10 +13,20 @@ const todos = (state = initialState, action) => {
     case "ADD_TODO":
       return {
         ...state,
-        list: [...state, action.task],
+        list: [...state.list, action.task],
+      };
+    case "SHOW_ACTIVE":
+      return {
+        ...state,
       };
     case "DELETE_TODO":
-      return {};
+      return {
+        ...state,
+        list: [
+          ...state.list.slice(0, action.index),
+          ...state.list.splice(action.index + 1),
+        ],
+      };
     default:
       return state;
   }

@@ -10,9 +10,9 @@ export const addTodo = (task) => {
   };
 };
 
-export const deleteTodo = (task) => {
+export const deleteTodo = (index) => {
   return {
     type: "DELETE_TODO",
-    task,
+    index,
   };
 };

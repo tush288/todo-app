@@ -9,7 +9,7 @@ import Header from "./Header";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Main.css";
 import { connect } from "react-redux";
-import { addTodo, updateState } from "./Actions";
+import { addTodo, deleteTodo, updateState } from "./Actions";
 
 function Main(props) {
   const [input, setInput] = useState("");
@@ -17,22 +17,18 @@ function Main(props) {
   const [sort, setSort] = useState("asc");
   const [status, setStatus] = useState("all");
 
-  console.log("props", props.list);
+  const { list, addTodo, deleteTodo, filteredList } = props;
 
   useEffect(() => {
-    console.log(status);
     let updatedList = [];
     if (status === "active") {
       updatedList = list.filter((task) => !task.status);
-      // setFilteredList(updatedList);
       updateState({ filteredList: updatedList });
     } else if (status === "completed") {
       updatedList = list.filter((task) => task.status);
-      // setFilteredList(updatedList);
       updateState({ filteredList: updatedList });
     } else {
-      // setFilteredList(list);
-      updateState({ filteredList: updatedList });
+      updateState({ filteredList: list });
     }
   }, [status, list]);
 
@@ -41,11 +37,9 @@ function Main(props) {
       console.log("enter");
     } else {
       const newTask = { name: input, status: false, date: new Date() };
-      console.log("list", props.list);
-
-      props.addTodo(newTask);
-      const data = [...list, newTask];
-      setList(data);
+      addTodo(newTask);
+      // const data = [...list, newTask];
+      // setList(data);
       setInput("");
     }
   };
@@ -54,13 +48,15 @@ function Main(props) {
     const updatedList = [...list];
     if (sort === "asc") {
       updatedList.sort((a, b) => a.date.getTime() - b.date.getTime());
-      setList(updatedList);
+      updateState({ list: updatedList });
+      // setList(updatedList);
       setSort("desc");
     } else {
       updatedList.sort((a, b) => b.date.getTime() - a.date.getTime());
       setSort("asc");
     }
-    setList(updatedList);
+    updateState({ list: updatedList });
+    // setList(updatedList);
   };
 
   const onDateChange = (index, date) => {
@@ -71,7 +67,7 @@ function Main(props) {
 
     updatedList[index] = task;
 
-    setList(updatedList);
+    // setList(updatedList);
   };
 
   const handleInputChange = (e) => setInput(e.target.value);
@@ -86,13 +82,13 @@ function Main(props) {
     updatedList[index] = task; //updating index with latest task state
     // console.log("updatedlist",updatedList)
 
-    setList(updatedList);
+    // setList(updatedList);
+    updateState({ list: updatedList });
   };
 
   const showAllTasks = () => {
     // setFilteredList(list);
     setStatus("all");
-    console.log(list);
   };
   const showActiveTasks = () => {
     setStatus("active");
@@ -104,7 +100,8 @@ function Main(props) {
   };
   const clearCompletedTasks = () => {
     const activeTasksList = list.filter((task) => !task.status);
-    setList(activeTasksList);
+    updateState({ list: activeTasksList });
+    // setList(activeTasksList);
     // setFilteredList(activeTasksList);
   };
 
@@ -112,9 +109,10 @@ function Main(props) {
     setActiveEditIndex(index);
   };
   const onDeleteHandle = (index) => {
-    const updatedList = [...list];
-    updatedList.splice(index, 1);
-    setList(updatedList);
+    deleteTodo(index);
+    // const updatedList = [...list];
+    // updatedList.splice(index, 1);
+    // setList(updatedList);
   };
   const onChangeTaskName = (e, index) => {
     console.log("clicked");
@@ -124,7 +122,8 @@ function Main(props) {
 
     updatedList[index] = task; //updating index with latest task state
 
-    setList(updatedList);
+    // setList(updatedList);
+    updateState({ list: updatedList });
   };
   const onEnterTaskName = (e, index) => {
     // onChangeTaskName(e,index)
@@ -187,12 +186,14 @@ const mapStateToProps = (state) => {
   // console.log(state);
   return {
     list: state.list,
-    filetereList: state.filteredList,
+    filteredList: state.filteredList,
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
     addTodo: (task) => dispatch(addTodo(task)),
+    deleteTodo: (taskIndex) => dispatch(deleteTodo(taskIndex)),
+    updateState: (data) => dispatch(updateState(data)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
