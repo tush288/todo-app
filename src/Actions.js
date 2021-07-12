@@ -3,7 +3,6 @@ export const updateState = (payload) => ({
   payload,
 });
 export const addTodo = (task) => {
-  //   console.log("task", task);
   return {
     type: "ADD_TODO",
     task,
