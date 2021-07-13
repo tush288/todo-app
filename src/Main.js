@@ -7,7 +7,7 @@ import Header from "./Header";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Main.css";
 import { connect } from "react-redux";
-import { addTodo, deleteTodo, updateState } from "./Actions";
+import { addTodo, deleteTodo, updateState } from "./redux/Actions";
 
 function Main(props) {
   const [input, setInput] = useState("");
