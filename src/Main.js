@@ -7,15 +7,22 @@ import Header from "./Header";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Main.css";
 import { connect } from "react-redux";
-import { addTodo, deleteTodo, updateState } from "./redux/Actions";
+import { addTodo, changeInput, deleteTodo, updateState } from "./redux/Actions";
 
 function Main(props) {
-  const [input, setInput] = useState("");
   const [activeEditIndex, setActiveEditIndex] = useState(null);
   const [sort, setSort] = useState("asc");
   const [status, setStatus] = useState("all");
 
-  const { list, addTodo, deleteTodo, updateState, filteredList } = props;
+  const {
+    list,
+    addTodo,
+    deleteTodo,
+    updateState,
+    filteredList,
+    input,
+    changeInput,
+  } = props;
 
   useEffect(() => {
     let updatedList = [];
@@ -37,7 +44,7 @@ function Main(props) {
       const newTask = { name: input, status: false, date: new Date() };
       addTodo(newTask);
 
-      setInput("");
+      changeInput("");
     }
   };
 
@@ -63,7 +70,7 @@ function Main(props) {
     updatedList[index] = task;
   };
 
-  const handleInputChange = (e) => setInput(e.target.value);
+  const handleInputChange = (e) => changeInput(e.target.value);
 
   const onChangeTaskStatus = (e, index) => {
     const status = e.target.checked;
@@ -139,6 +146,7 @@ const mapStateToProps = (state) => {
   return {
     list: state.list,
     filteredList: state.filteredList,
+    input: state.input,
   };
 };
 const mapDispatchToProps = (dispatch) => {
@@ -146,6 +154,7 @@ const mapDispatchToProps = (dispatch) => {
     addTodo: (task) => dispatch(addTodo(task)),
     deleteTodo: (taskIndex) => dispatch(deleteTodo(taskIndex)),
     updateState: (data) => dispatch(updateState(data)),
+    changeInput: (value) => dispatch(changeInput(value)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

@@ -15,3 +15,9 @@ export const deleteTodo = (index) => {
     index,
   };
 };
+export const changeInput = (value) => {
+  return {
+    type: "CHANGE_INPUT",
+    value,
+  };
+};

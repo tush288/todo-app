@@ -1,6 +1,7 @@
 const initialState = {
   list: [],
   filteredList: [],
+  input: "",
 };
 
 const todos = (state = initialState, action) => {
@@ -14,6 +15,11 @@ const todos = (state = initialState, action) => {
       return {
         ...state,
         list: [...state.list, action.task],
+      };
+    case "CHANGE_INPUT":
+      return {
+        ...state,
+        input: action.value,
       };
     case "SHOW_ACTIVE":
       return {
