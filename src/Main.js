@@ -1,10 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import "antd/dist/antd.css";
 import List from "./List";
 import Input from "./Input";
 import Header from "./Header";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "./Main.css";
 import { connect } from "react-redux";
 import { addTodo, changeInput, deleteTodo, updateState } from "./redux/Actions";

@@ -4,6 +4,9 @@
 .list {
   width: fit-content;
 }
+/* .list_grp {
+  display: flex;
+} */
 
 .app__list {
   margin-bottom: 20px;
