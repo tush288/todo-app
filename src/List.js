@@ -1,74 +1,63 @@
 import React from "react";
 import "antd/dist/antd.css";
-import { List, Typography, Checkbox, Input, Button, Popconfirm } from "antd";
-import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import { AiFillEdit, AiFillDelete } from "react-icons/ai";
+import { Button } from "react-bootstrap";
 
 import "./List.css";
 
-import { Modal, Nav } from "react-bootstrap";
+import {
+  Modal,
+  Nav,
+  ListGroup,
+  InputGroup,
+  Form,
+  FormControl,
+} from "react-bootstrap";
 
 function TodoList(props) {
+  console.log("props", props.data);
   return (
     <div className="list_modal w-100">
       <Modal.Dialog className="shadow-lg">
         <Modal.Header className="d-flex justify-content-between">
           <Modal.Title>Tasks</Modal.Title>
-          <Button className="mt-2" onClick={props.handleSort}>
+
+          <Button variant="primary" onClick={props.handleSort}>
             sort
           </Button>
         </Modal.Header>
 
         <Modal.Body>
           <div className="list mx-auto w-100">
-            <List
-              dataSource={props.data}
-              renderItem={(item, index) => (
-                <List.Item>
-                  <Typography.Text mark>
-                    <div className="list_checkbox">
-                      <Checkbox
-                        type="checkbox"
-                        checked={props.data[index].status}
-                        onChange={(e) => props.onChangeCheckBox(e, index)}
-                      />
-                    </div>
-                  </Typography.Text>
+            {props.data.map((item, index) => {
+              <ListGroup>
+                <ListGroup.item>
+                  <Form.Check
+                    aria-label="option 1"
+                    checked={props.data[index].status}
+                    onChange={(e) => props.onChangeCheckBox(e, index)}
+                  />
                   {props.activeIndex !== index ? (
                     <div className="list_mapitem">{item.name}</div>
                   ) : (
                     <div className="list_input">
-                      <Input
+                      <Form.Control
                         value={item.name}
                         onChange={(e) => props.onChangeTaskName(e, index)}
                         onPressEnter={(e) => props.onEnterTaskName(e, index)}
+                        type="text"
+                        placeholder="Normal text"
                       />
                     </div>
                   )}
+                  <div className="list_icons">
+                    <AiFillEdit />
 
-                  <div className="list_icons ">
-                    <EditOutlined
-                      style={{ fontSize: "25px", marginLeft: "-10%" }}
-                      onClick={() => props.onEdit(index)}
-                    />
-
-                    <Popconfirm
-                      title="Are you sure to delete this task?"
-                      onConfirm={() => props.onDelete(index)}
-                      onCancel={() => {}}
-                      okText="Yes"
-                      cancelText="No"
-                    >
-                      <DeleteOutlined
-                        style={{
-                          fontSize: "25px",
-                          marginLeft: "20%",
-                        }}
-                      />
-                    </Popconfirm>
+                    <AiFillDelete />
                   </div>
-                </List.Item>
-              )}
-            />
+                </ListGroup.item>
+              </ListGroup>;
+            })}
           </div>
         </Modal.Body>
 
